@@ -1,0 +1,2120 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
+    />
+    <meta name="theme-color" content="#fdf6ef" />
+    <title>İki Yıl · Bizim Hikayemiz</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=VT323&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg: #fdf6ef;
+        --bg-2: #f7e6d7;
+        --ink: #2b1d1a;
+        --ink-soft: #5a3b35;
+        --rose: #e86a6a;
+        --rose-deep: #c94848;
+        --blush: #ffd4c7;
+        --gold: #e2a84b;
+        --sky: #a7c7e7;
+        --mint: #b7d8b0;
+        --pixel: "Press Start 2P", monospace;
+        --mono: "VT323", monospace;
+        --serif: "Fraunces", "Georgia", serif;
+
+        --shadow: 6px 6px 0 var(--ink);
+        --shadow-sm: 3px 3px 0 var(--ink);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        -webkit-tap-highlight-color: transparent;
+      }
+      html,
+      body {
+        background: var(--bg);
+        color: var(--ink);
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--serif);
+        font-size: 18px;
+        line-height: 1.6;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        min-height: 100vh;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image:
+          radial-gradient(rgba(43, 29, 26, 0.06) 1px, transparent 1px),
+          radial-gradient(rgba(232, 106, 106, 0.05) 1px, transparent 1px);
+        background-size:
+          24px 24px,
+          24px 24px;
+        background-position:
+          0 0,
+          12px 12px;
+        pointer-events: none;
+        z-index: 0;
+        animation: bgDrift 40s linear infinite;
+      }
+      @keyframes bgDrift {
+        from {
+          background-position:
+            0 0,
+            12px 12px;
+        }
+        to {
+          background-position:
+            240px 240px,
+            252px 252px;
+        }
+      }
+
+      img {
+        image-rendering: pixelated;
+        image-rendering: crisp-edges;
+      }
+
+      /* ---------- Floating hearts ---------- */
+      .hearts {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 1;
+      }
+      .hearts span {
+        position: absolute;
+        bottom: -40px;
+        width: 18px;
+        height: 18px;
+        background:
+          linear-gradient(var(--rose), var(--rose)) 0 4px/6px 10px no-repeat,
+          linear-gradient(var(--rose), var(--rose)) 12px 4px/6px 10px no-repeat,
+          linear-gradient(var(--rose), var(--rose)) 4px 0/10px 6px no-repeat,
+          linear-gradient(var(--rose), var(--rose)) 2px 10px/14px 4px no-repeat,
+          linear-gradient(var(--rose), var(--rose)) 4px 14px/10px 2px no-repeat,
+          linear-gradient(var(--rose), var(--rose)) 6px 16px/6px 2px no-repeat;
+        opacity: 0.55;
+        animation: rise linear infinite;
+      }
+      @keyframes rise {
+        0% {
+          transform: translateY(0) translateX(0) rotate(0);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.7;
+        }
+        50% {
+          transform: translateY(-55vh) translateX(20px) rotate(8deg);
+        }
+        100% {
+          transform: translateY(-110vh) translateX(-10px) rotate(-8deg);
+          opacity: 0;
+        }
+      }
+
+      main {
+        position: relative;
+        z-index: 2;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 60px 28px 120px;
+      }
+
+      /* ---------- Hint banner (easter egg ipucu) ---------- */
+      .hint {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 20;
+        background: var(--ink);
+        color: var(--bg);
+        font-family: var(--pixel);
+        font-size: 9px;
+        letter-spacing: 1px;
+        padding: 10px 14px;
+        border: 2px solid var(--ink);
+        box-shadow: 3px 3px 0 var(--rose);
+        opacity: 0;
+        transform: translateX(20px);
+        animation:
+          hintIn 0.6s 2s ease forwards,
+          hintOut 0.5s 9s ease forwards;
+        max-width: 260px;
+        line-height: 1.5;
+      }
+      .hint::before {
+        content: "👀 ";
+        margin-right: 4px;
+      }
+      @keyframes hintIn {
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      @keyframes hintOut {
+        to {
+          opacity: 0;
+          transform: translateX(20px);
+          visibility: hidden;
+        }
+      }
+
+      /* ---------- Hero ---------- */
+      .hero {
+        text-align: center;
+        padding: 40px 0 20px;
+        position: relative;
+      }
+      .eyebrow {
+        font-family: var(--pixel);
+        font-size: 11px;
+        letter-spacing: 2px;
+        color: var(--rose-deep);
+        margin-bottom: 22px;
+        opacity: 0;
+        animation: fadeDown 0.8s 0.2s ease forwards;
+      }
+      .eyebrow::before,
+      .eyebrow::after {
+        content: "♥";
+        display: inline-block;
+        margin: 0 10px;
+        color: var(--rose);
+        animation: beat 1.4s ease infinite;
+      }
+      .eyebrow::after {
+        animation-delay: 0.7s;
+      }
+      @keyframes beat {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        14% {
+          transform: scale(1.3);
+        }
+        28% {
+          transform: scale(1);
+        }
+        42% {
+          transform: scale(1.3);
+        }
+        70% {
+          transform: scale(1);
+        }
+      }
+
+      h1 {
+        font-family: var(--serif);
+        font-weight: 300;
+        font-style: italic;
+        font-size: clamp(40px, 8vw, 96px);
+        line-height: 1;
+        letter-spacing: -0.02em;
+        color: var(--ink);
+      }
+      h1 .word {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(40px);
+        animation: wordUp 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      }
+      h1 .word.w1 {
+        animation-delay: 0.4s;
+      }
+      h1 .word.w2 {
+        animation-delay: 0.6s;
+        color: var(--rose);
+        font-weight: 400;
+      }
+      h1 .word.w3 {
+        animation-delay: 0.8s;
+      }
+      h1 .word.w4 {
+        animation-delay: 1s;
+      }
+      @keyframes wordUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .sub {
+        margin-top: 22px;
+        font-family: var(--mono);
+        font-size: clamp(18px, 4.5vw, 22px);
+        color: var(--ink-soft);
+        letter-spacing: 1px;
+        opacity: 0;
+        animation: fadeDown 0.8s 1.3s ease forwards;
+      }
+      @keyframes fadeDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Couple artwork */
+      .couple-wrap {
+        margin: 40px auto 10px;
+        position: relative;
+        width: min(520px, 90%);
+        aspect-ratio: 1 / 1;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        opacity: 0;
+        cursor: pointer;
+        animation: bounceIn 1s 1.4s cubic-bezier(0.2, 0.9, 0.3, 1.3) forwards;
+      }
+      @keyframes bounceIn {
+        0% {
+          opacity: 0;
+          transform: scale(0.6) translateY(40px);
+        }
+        60% {
+          opacity: 1;
+          transform: scale(1.05) translateY(-6px);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+      .couple-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        filter: drop-shadow(6px 8px 0 rgba(43, 29, 26, 0.12));
+        transition: transform 0.3s;
+        animation: float 6s 2.4s ease-in-out infinite;
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      /* Speech bubble (easter egg on couple click) */
+      .bubble {
+        position: absolute;
+        top: 2%;
+        left: 50%;
+        transform: translateX(-50%) scale(0);
+        background: #fff;
+        border: 3px solid var(--ink);
+        border-radius: 16px;
+        padding: 14px 20px;
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: 18px;
+        color: var(--ink);
+        white-space: nowrap;
+        box-shadow: 4px 4px 0 var(--ink);
+        z-index: 5;
+        transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.5);
+        pointer-events: none;
+      }
+      .bubble::after {
+        content: "";
+        position: absolute;
+        bottom: -12px;
+        left: 30px;
+        width: 0;
+        height: 0;
+        border: 10px solid transparent;
+        border-top-color: var(--ink);
+        border-bottom: 0;
+      }
+      .bubble::before {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 33px;
+        width: 0;
+        height: 0;
+        border: 7px solid transparent;
+        border-top-color: #fff;
+        border-bottom: 0;
+        z-index: 1;
+      }
+      .bubble.show {
+        transform: translateX(-50%) scale(1);
+      }
+
+      .pulse {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 60%;
+        height: 60%;
+        transform: translate(-50%, -50%);
+        border: 3px solid var(--rose);
+        border-radius: 50%;
+        opacity: 0;
+        animation: pulseRing 3s 2s ease-out infinite;
+        pointer-events: none;
+      }
+      .pulse.p2 {
+        animation-delay: 3.5s;
+      }
+      @keyframes pulseRing {
+        0% {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(0.6);
+        }
+        30% {
+          opacity: 0.4;
+        }
+        100% {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(1.4);
+        }
+      }
+
+      .spark {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: var(--gold);
+        box-shadow:
+          0 -8px 0 var(--gold),
+          0 8px 0 var(--gold),
+          -8px 0 0 var(--gold),
+          8px 0 0 var(--gold);
+        animation: twinkle 2s ease-in-out infinite;
+        pointer-events: none;
+      }
+      .spark.s1 {
+        top: 12%;
+        left: 8%;
+        animation-delay: 0.2s;
+      }
+      .spark.s2 {
+        top: 22%;
+        right: 6%;
+        animation-delay: 0.9s;
+        background: var(--rose);
+        box-shadow:
+          0 -8px 0 var(--rose),
+          0 8px 0 var(--rose),
+          -8px 0 0 var(--rose),
+          8px 0 0 var(--rose);
+      }
+      .spark.s3 {
+        top: 55%;
+        left: -4%;
+        animation-delay: 1.4s;
+      }
+      .spark.s4 {
+        top: 40%;
+        right: -2%;
+        animation-delay: 0.5s;
+        background: var(--rose);
+        box-shadow:
+          0 -8px 0 var(--rose),
+          0 8px 0 var(--rose),
+          -8px 0 0 var(--rose),
+          8px 0 0 var(--rose);
+      }
+      @keyframes twinkle {
+        0%,
+        100% {
+          transform: scale(1) rotate(0);
+          opacity: 0.9;
+        }
+        50% {
+          transform: scale(0.3) rotate(45deg);
+          opacity: 0.2;
+        }
+      }
+
+      /* ---------- Scroll reveal ---------- */
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition:
+          opacity 0.9s ease,
+          transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .reveal.in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .reveal.delay-1 {
+        transition-delay: 0.15s;
+      }
+      .reveal.delay-2 {
+        transition-delay: 0.3s;
+      }
+
+      /* ---------- Live counter ---------- */
+      .counter {
+        margin: 60px auto 0;
+        max-width: 780px;
+        background: #fff;
+        border: 3px solid var(--ink);
+        border-radius: 6px;
+        padding: 32px 22px;
+        position: relative;
+        box-shadow: 10px 10px 0 var(--rose);
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+      }
+      .counter::before {
+        content: "● ● ●";
+        position: absolute;
+        top: 10px;
+        left: 16px;
+        font-family: var(--pixel);
+        font-size: 10px;
+        color: var(--rose);
+        letter-spacing: 4px;
+      }
+      .counter-title {
+        text-align: center;
+        font-family: var(--pixel);
+        font-size: 11px;
+        color: var(--ink-soft);
+        margin-bottom: 22px;
+        letter-spacing: 2px;
+      }
+      .counter-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+      }
+      .cell {
+        text-align: center;
+        padding: 14px 6px;
+        background: var(--bg-2);
+        border: 2px solid var(--ink);
+        border-radius: 4px;
+        position: relative;
+        transition: transform 0.25s;
+      }
+      .cell:hover {
+        transform: translateY(-4px) rotate(-1deg);
+      }
+      .cell .n {
+        display: block;
+        font-family: var(--mono);
+        font-size: clamp(28px, 7vw, 40px);
+        line-height: 1;
+        color: var(--rose-deep);
+        font-weight: 700;
+        transition: transform 0.2s;
+      }
+      .cell .n.bump {
+        animation: bump 0.25s ease;
+      }
+      @keyframes bump {
+        0% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-6px);
+          color: var(--gold);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+      .cell .l {
+        display: block;
+        margin-top: 6px;
+        font-family: var(--pixel);
+        font-size: 8px;
+        color: var(--ink);
+        letter-spacing: 1px;
+      }
+      .cell.heartbeat .l::before {
+        content: "♥";
+        display: inline-block;
+        margin-right: 4px;
+        color: var(--rose);
+        animation: beat 1.2s ease infinite;
+      }
+
+      /* ---------- Section header ---------- */
+      .section {
+        margin-top: 120px;
+      }
+      .section-head {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        margin-bottom: 40px;
+      }
+      .section-num {
+        font-family: var(--pixel);
+        font-size: 11px;
+        color: var(--rose);
+        background: #fff;
+        border: 2px solid var(--ink);
+        padding: 8px 10px;
+        transition: transform 0.3s;
+      }
+      .section-head:hover .section-num {
+        transform: rotate(-8deg) scale(1.1);
+      }
+      .section-title {
+        font-family: var(--serif);
+        font-style: italic;
+        font-weight: 400;
+        font-size: clamp(26px, 6vw, 46px);
+        letter-spacing: -0.01em;
+      }
+      .section-line {
+        flex: 1;
+        height: 3px;
+        background: repeating-linear-gradient(
+          90deg,
+          var(--ink) 0 8px,
+          transparent 8px 14px
+        );
+      }
+      .section-hint {
+        font-family: var(--mono);
+        font-size: 16px;
+        color: var(--ink-soft);
+        margin-top: -28px;
+        margin-bottom: 32px;
+        font-style: italic;
+      }
+
+      /* ---------- Us card (two portraits) ---------- */
+      .us {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+        position: relative;
+      }
+      .portrait {
+        background: #fff;
+        border: 3px solid var(--ink);
+        border-radius: 6px;
+        padding: 20px;
+        text-align: center;
+        position: relative;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+        cursor: pointer;
+        box-shadow: var(--shadow);
+      }
+      .portrait:hover {
+        transform: translate(-4px, -8px) rotate(-1deg);
+        box-shadow: 10px 14px 0 var(--ink);
+      }
+      .portrait.her:hover {
+        transform: translate(-4px, -8px) rotate(1deg);
+      }
+      .portrait.shake {
+        animation: wiggle 0.5s ease;
+      }
+      @keyframes wiggle {
+        0%,
+        100% {
+          transform: rotate(0);
+        }
+        25% {
+          transform: rotate(-3deg);
+        }
+        75% {
+          transform: rotate(3deg);
+        }
+      }
+      .portrait .tag {
+        position: absolute;
+        top: -14px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--rose);
+        color: #fff;
+        font-family: var(--pixel);
+        font-size: 9px;
+        padding: 6px 10px;
+        letter-spacing: 1px;
+        border: 2px solid var(--ink);
+        white-space: nowrap;
+      }
+      .portrait.her .tag {
+        background: var(--gold);
+        color: var(--ink);
+      }
+      .portrait img {
+        width: 100%;
+        max-width: 260px;
+        aspect-ratio: 1/1;
+        object-fit: contain;
+        margin: 10px auto 16px;
+        display: block;
+        transition: transform 0.4s;
+      }
+      .portrait:hover img {
+        transform: scale(1.05) translateY(-4px);
+      }
+      .portrait .name {
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: clamp(22px, 5vw, 28px);
+        color: var(--ink);
+      }
+      .portrait .role {
+        font-family: var(--mono);
+        font-size: 18px;
+        color: var(--ink-soft);
+        margin-top: 4px;
+      }
+      .us-heart {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        width: 40px;
+        height: 40px;
+        background:
+          linear-gradient(var(--rose), var(--rose)) 0 10px/14px 22px no-repeat,
+          linear-gradient(var(--rose), var(--rose)) 26px 10px/14px 22px
+            no-repeat,
+          linear-gradient(var(--rose), var(--rose)) 8px 0/24px 14px no-repeat,
+          linear-gradient(var(--rose), var(--rose)) 4px 22px/32px 8px no-repeat,
+          linear-gradient(var(--rose), var(--rose)) 8px 30px/24px 6px no-repeat,
+          linear-gradient(var(--rose), var(--rose)) 14px 36px/12px 4px no-repeat;
+        pointer-events: none;
+        z-index: 3;
+        transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.5);
+      }
+      .us:hover .us-heart {
+        transform: translate(-50%, -50%) scale(1);
+        animation: beat 1s ease infinite;
+      }
+
+      /* ================================================
+     MEMORY CARDS (flip cards - replaces timeline)
+  ================================================ */
+      .memories {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 22px;
+      }
+      .mem-card {
+        aspect-ratio: 3 / 4;
+        perspective: 1200px;
+        cursor: pointer;
+      }
+      .mem-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.8s cubic-bezier(0.3, 0.8, 0.3, 1.2);
+        transform-style: preserve-3d;
+      }
+      .mem-card.flipped .mem-inner {
+        transform: rotateY(180deg);
+      }
+      .mem-face {
+        position: absolute;
+        inset: 0;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border: 3px solid var(--ink);
+        border-radius: 6px;
+        padding: 22px 20px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: var(--shadow-sm);
+      }
+      /* FRONT */
+      .mem-front {
+        background: var(--rose);
+        color: #fff;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-image: repeating-linear-gradient(
+          45deg,
+          rgba(255, 255, 255, 0.08) 0 6px,
+          transparent 6px 14px
+        );
+      }
+      .mem-front .mem-num {
+        font-family: var(--pixel);
+        font-size: 10px;
+        letter-spacing: 2px;
+        padding: 6px 10px;
+        background: var(--ink);
+        color: var(--bg);
+        margin-bottom: 16px;
+      }
+      .mem-front .mem-icon {
+        font-size: 40px;
+        margin-bottom: 14px;
+        animation: iconFloat 3s ease-in-out infinite;
+      }
+      @keyframes iconFloat {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0);
+        }
+        50% {
+          transform: translateY(-6px) rotate(-5deg);
+        }
+      }
+      .mem-front .mem-teaser {
+        font-family: var(--pixel);
+        font-size: 10px;
+        letter-spacing: 1px;
+        line-height: 1.6;
+      }
+      .mem-front .mem-flip-hint {
+        position: absolute;
+        bottom: 14px;
+        font-family: var(--mono);
+        font-size: 16px;
+        opacity: 0.75;
+      }
+      .mem-front .mem-flip-hint::before {
+        content: "▸ ";
+      }
+
+      /* BACK */
+      .mem-back {
+        background: var(--bg-2);
+        transform: rotateY(180deg);
+        justify-content: flex-start;
+      }
+      .mem-back .mem-date {
+        font-family: var(--pixel);
+        font-size: 8px;
+        letter-spacing: 1px;
+        color: var(--rose-deep);
+        margin-bottom: 10px;
+      }
+      .mem-back h3 {
+        font-family: var(--serif);
+        font-style: italic;
+        font-weight: 400;
+        font-size: 22px;
+        margin-bottom: 8px;
+        color: var(--ink);
+      }
+      .mem-back p {
+        font-size: 15px;
+        color: var(--ink-soft);
+        line-height: 1.55;
+      }
+      .mem-back .mem-heart {
+        margin-top: auto;
+        align-self: flex-end;
+        color: var(--rose);
+        animation: beat 1.4s ease infinite;
+      }
+
+      /* ================================================
+     ENVELOPE LETTER — temiz 3D açılış (GÜNCELLENDİ)
+     Katmanlama (z-index) ve Hizalama Düzeltmeleri
+  ================================================ */
+      .envelope-scene {
+        max-width: 560px;
+        margin: 0 auto;
+        padding-bottom: 80px; /* Alttaki "TIKLA" ve pul için yer açtık */
+        perspective: 1600px;
+      }
+
+      .envelope {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1.7 / 1;
+        cursor: pointer;
+        transition: transform 1s ease; /* Daha yavaş, yumuşak açılış */
+        transform-style: preserve-3d; /* 3D geçişler için */
+      }
+
+      .envelope:not(.opened):hover {
+        transform: translateY(-8px); /* Daha fark edilir bir hover efekti */
+      }
+
+      /* Zarf açıldığında tüm zarfın aşağı kaymasını sağladık */
+      .envelope.opened {
+        transform: translateY(120px) !important;
+      }
+
+      /* En arkadaki zarf tabanı */
+      .env-back {
+        position: absolute;
+        inset: 0;
+        background: var(--bg-2);
+        border: 3px solid var(--ink);
+        border-radius: 4px;
+        box-shadow: var(--shadow);
+        z-index: 1;
+        overflow: hidden;
+      }
+
+      /* Zarfın ÖN yüzü — alt gövde, üst kenarı clip-path ile V formu */
+      .env-front {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 60%; /* Yüksekliği biraz artırdık */
+        background: var(--bg-2);
+        border: 3px solid var(--ink);
+        border-top: none;
+        border-radius: 0 0 4px 4px;
+        z-index: 3;
+        /* clip-path'i daha düzgün hale getirdik */
+        clip-path: polygon(0 0, 50% 40%, 100% 0, 100% 100%, 0 100%);
+      }
+
+      /* Üçgen kapak — üstte duran, tıklayınca arkaya yatan */
+      .env-flap {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 60%; /* Yüksekliği gövdeyle uyumlu yaptık */
+        background: var(--blush);
+        border: 3px solid var(--ink);
+        clip-path: polygon(0 0, 100% 0, 50% 100%);
+        transform-origin: top center;
+        transform: rotateX(0deg);
+        transition: transform 1s cubic-bezier(0.5, 0.1, 0.3, 1);
+        z-index: 5;
+      }
+
+      /* Zarf açıldığında kapak arkaya yatar (Z-index değişimi) */
+      .envelope.opened .env-flap {
+        transform: rotateX(-180deg);
+        z-index: 0; /* Mektubun arkasına gitmesi için */
+      }
+
+      /* Mektup kağıdı — zarfın içinde gizli, açılınca yukarı çıkar */
+      .env-letter {
+        position: absolute;
+        left: 8%;
+        right: 8%;
+        top: 20%;
+        bottom: 12%;
+        background: #fff;
+        border: 2px solid var(--ink);
+        padding: 16px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+        transition:
+          transform 1s 0.2s cubic-bezier(0.2, 0.8, 0.3, 1),
+          opacity 0.5s 0.2s;
+        opacity: 0; /* Kapalıyken gizli */
+      }
+
+      /* Zarf açıldığında mektup yukarı çıkar ve görünür olur */
+      .envelope.opened .env-letter {
+        transform: translateY(-70%);
+        opacity: 1;
+      }
+
+      .env-letter-preview {
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: clamp(16px, 4vw, 22px);
+        text-align: center;
+        color: var(--rose-deep);
+        line-height: 1.4;
+        opacity: 0; /* Kapalıyken gizli */
+      }
+
+      /* Zarf açıldığında mektup önizleme metni görünür olur */
+      .envelope.opened .env-letter .env-letter-preview {
+        opacity: 1;
+        transition: opacity 0.5s 1.2s; /* Tam açıldıktan sonra görünmesi için gecikme */
+      }
+
+      /* Pul — küçültülüp yerleştirildi */
+      .env-stamp {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        width: 44px;
+        height: 52px;
+        background: var(--rose);
+        border: 2px solid var(--ink);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        color: #fff;
+        z-index: 4;
+        transition:
+          opacity 0.4s ease,
+          transform 0.6s ease;
+        animation: beat 1.6s ease infinite;
+      }
+
+      /* Zarf açıldığında pul gizlenir */
+      .envelope.opened .env-stamp {
+        opacity: 0;
+        transform: scale(0.6);
+      }
+
+      /* gönderen adresi süsü (TO: ASKIMA) */
+      .env-front::after {
+        content: "TO: ASKIMA";
+        position: absolute;
+        bottom: 18px;
+        left: 20px;
+        font-family: var(--pixel);
+        font-size: 8px;
+        letter-spacing: 1px;
+        color: var(--ink-soft);
+      }
+
+      /* "TIKLA" ipucu — Pulun altına yerleştirildi */
+      .env-tap {
+        position: absolute;
+        top: 75px;
+        right: 18px;
+        font-family: var(--pixel);
+        font-size: 10px;
+        color: var(--rose-deep);
+        letter-spacing: 2px;
+        z-index: 6;
+        pointer-events: none;
+        animation: pulseUp 1.6s ease infinite;
+        transition: opacity 0.3s;
+      }
+
+      /* Zarf açıldığında "TIKLA" gizlenir */
+      .envelope.opened .env-tap {
+        opacity: 0;
+      }
+
+      @keyframes pulseUp {
+        0%,
+        100% {
+          transform: translate(-50%, 0);
+          opacity: 0.7;
+        }
+        50% {
+          transform: translate(-50%, -4px);
+          opacity: 1;
+        }
+      }
+
+      /* Full letter (appears after envelope opens) */
+      .letter-full {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        /* transition'a padding'i de ekledik ki açılırken yumuşak olsun */
+        transition:
+          max-height 1.5s ease,
+          opacity 1s ease,
+          margin 1.5s ease,
+          padding 1.5s ease;
+        margin-top: 0;
+        padding: 0; /* Kapalıyken sıfır */
+      }
+
+      .letter-full.show {
+        max-height: 2500px;
+        opacity: 1;
+        margin-top: 140px;
+      }
+
+      .letter {
+        background: var(--bg-2);
+        border: 3px solid var(--ink);
+        border-radius: 6px;
+        padding: 40px 34px;
+        position: relative;
+        box-shadow: 10px 10px 0 var(--gold);
+        transition:
+          transform 0.4s,
+          box-shadow 0.4s;
+        overflow-y: auto;
+        margin: 30px 15px 20px 15px;
+      }
+      .letter:hover {
+        transform: translate(-2px, -2px) rotate(-0.3deg);
+        box-shadow: 12px 12px 0 var(--gold);
+      }
+      .letter::before {
+        content: "TO: AŞKIM";
+        position: absolute;
+        top: -14px;
+        left: 30px;
+        background: var(--ink);
+        color: var(--bg);
+        font-family: var(--pixel);
+        font-size: 10px;
+        padding: 6px 12px;
+        letter-spacing: 2px;
+      }
+      .letter::after {
+        content: "♥";
+        position: absolute;
+        top: -20px;
+        right: 30px;
+        width: 40px;
+        height: 40px;
+        background: var(--rose);
+        color: #fff;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid var(--ink);
+        border-radius: 50%;
+        animation: beat 1.4s ease infinite;
+      }
+      .letter p {
+        font-family: var(--serif);
+        font-size: clamp(16px, 4vw, 19px);
+        line-height: 1.8;
+        color: var(--ink);
+        margin-bottom: 16px;
+      }
+      .letter p:first-of-type::first-letter {
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: 58px;
+        float: left;
+        line-height: 0.9;
+        padding: 4px 10px 0 0;
+        color: var(--rose-deep);
+      }
+      .letter .sign {
+        margin-top: 20px;
+        font-family: var(--serif);
+        font-style: italic;
+        text-align: right;
+        font-size: clamp(18px, 4.5vw, 22px);
+        color: var(--rose-deep);
+      }
+
+      /* ================================================
+     ACHIEVEMENT TOAST (easter egg: scroll to bottom)
+  ================================================ */
+      .achievement {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%) translateY(200px);
+        background: var(--ink);
+        color: var(--bg);
+        border: 3px solid var(--ink);
+        box-shadow: 6px 6px 0 var(--gold);
+        padding: 18px 24px;
+        z-index: 40;
+        max-width: calc(100% - 40px);
+        width: 360px;
+        transition: transform 0.6s cubic-bezier(0.2, 0.9, 0.3, 1.3);
+      }
+      .achievement.show {
+        transform: translateX(-50%) translateY(0);
+      }
+      .achievement .ach-head {
+        font-family: var(--pixel);
+        font-size: 9px;
+        color: var(--gold);
+        letter-spacing: 2px;
+        margin-bottom: 6px;
+      }
+      .achievement .ach-head::before {
+        content: "★ ";
+      }
+      .achievement .ach-title {
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: 20px;
+        margin-bottom: 4px;
+      }
+      .achievement .ach-sub {
+        font-family: var(--mono);
+        font-size: 15px;
+        color: var(--blush);
+      }
+
+      /* ---------- Surprise button ---------- */
+      .surprise {
+        margin-top: 80px;
+        text-align: center;
+      }
+      .btn {
+        display: inline-block;
+        cursor: pointer;
+        font-family: var(--pixel);
+        font-size: clamp(11px, 3vw, 13px);
+        letter-spacing: 2px;
+        color: #fff;
+        background: var(--rose);
+        border: 3px solid var(--ink);
+        padding: 18px 28px;
+        box-shadow: 6px 6px 0 var(--ink);
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease,
+          background 0.2s;
+        user-select: none;
+        position: relative;
+        animation: gentleBob 3s ease-in-out infinite;
+      }
+      @keyframes gentleBob {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-4px);
+        }
+      }
+      .btn:hover {
+        background: var(--rose-deep);
+        animation: none;
+        transform: translateY(-2px) scale(1.03);
+        box-shadow: 8px 8px 0 var(--ink);
+      }
+      .btn:active {
+        transform: translate(6px, 6px);
+        box-shadow: 0 0 0 var(--ink);
+      }
+
+      /* Modal */
+      .modal {
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background: rgba(43, 29, 26, 0.6);
+        z-index: 50;
+        padding: 20px;
+      }
+      .modal.open {
+        display: flex;
+        animation: fadeIn 0.3s ease;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      .modal-card {
+        background: var(--bg);
+        border: 3px solid var(--ink);
+        border-radius: 6px;
+        max-width: 480px;
+        width: 100%;
+        padding: 34px 28px;
+        text-align: center;
+        box-shadow: 10px 10px 0 var(--rose);
+        animation: pop 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.4);
+        position: relative;
+      }
+      @keyframes pop {
+        from {
+          transform: scale(0.4) rotate(-8deg);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1) rotate(0);
+          opacity: 1;
+        }
+      }
+      .modal-card .big-heart {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 14px;
+        background:
+          linear-gradient(var(--rose), var(--rose)) 0 16px/20px 32px no-repeat,
+          linear-gradient(var(--rose), var(--rose)) 40px 16px/20px 32px
+            no-repeat,
+          linear-gradient(var(--rose), var(--rose)) 12px 0/36px 20px no-repeat,
+          linear-gradient(var(--rose), var(--rose)) 6px 32px/48px 12px no-repeat,
+          linear-gradient(var(--rose), var(--rose)) 12px 44px/36px 8px no-repeat,
+          linear-gradient(var(--rose), var(--rose)) 20px 52px/20px 4px no-repeat;
+        animation: beat 1.2s ease infinite;
+      }
+      .modal h2 {
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: clamp(28px, 7vw, 38px);
+        color: var(--rose-deep);
+        margin-bottom: 14px;
+      }
+      .modal p {
+        color: var(--ink-soft);
+        margin-bottom: 24px;
+        font-size: clamp(15px, 4vw, 17px);
+      }
+      .modal-close {
+        font-family: var(--pixel);
+        font-size: 10px;
+        letter-spacing: 1px;
+        background: var(--ink);
+        color: var(--bg);
+        border: none;
+        padding: 14px 22px;
+        cursor: pointer;
+        transition:
+          transform 0.2s,
+          background 0.2s;
+      }
+      .modal-close:hover {
+        background: var(--rose-deep);
+        transform: scale(1.05);
+      }
+
+      .confetti {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 60;
+        overflow: hidden;
+      }
+      .confetti span {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        top: 50%;
+        left: 50%;
+        opacity: 1;
+      }
+
+      footer {
+        margin-top: 100px;
+        text-align: center;
+        font-family: var(--pixel);
+        font-size: 10px;
+        color: var(--ink-soft);
+        letter-spacing: 2px;
+      }
+      footer::before {
+        content: "";
+        display: block;
+        height: 6px;
+        width: 120px;
+        margin: 0 auto 24px;
+        background: linear-gradient(
+          90deg,
+          var(--rose) 0 20%,
+          var(--gold) 20% 40%,
+          var(--mint) 40% 60%,
+          var(--sky) 60% 80%,
+          var(--blush) 80% 100%
+        );
+        animation: footerShift 4s linear infinite;
+        background-size: 200% 100%;
+      }
+      @keyframes footerShift {
+        from {
+          background-position: 0 0;
+        }
+        to {
+          background-position: 200% 0;
+        }
+      }
+
+      /* ==================== RESPONSIVE ==================== */
+      @media (max-width: 820px) {
+        main {
+          padding: 40px 20px 80px;
+        }
+        .section {
+          margin-top: 90px;
+        }
+        .counter {
+          padding: 26px 16px;
+        }
+        .counter-grid {
+          gap: 8px;
+        }
+        .cell {
+          padding: 12px 4px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        body {
+          font-size: 16px;
+        }
+        main {
+          padding: 30px 16px 60px;
+        }
+        .hint {
+          top: 14px;
+          right: 14px;
+          font-size: 8px;
+          padding: 8px 10px;
+          max-width: 200px;
+        }
+
+        .hero {
+          padding: 20px 0 10px;
+        }
+        .eyebrow {
+          font-size: 9px;
+          letter-spacing: 1.5px;
+        }
+        .sub {
+          margin-top: 16px;
+        }
+        .couple-wrap {
+          margin: 30px auto 0;
+        }
+        .bubble {
+          font-size: 14px;
+          padding: 10px 14px;
+        }
+
+        .counter {
+          margin-top: 40px;
+          padding: 24px 14px;
+          box-shadow: 6px 6px 0 var(--rose);
+        }
+        .counter-title {
+          font-size: 9px;
+          letter-spacing: 1.5px;
+        }
+        .counter-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 8px;
+        }
+        .cell:nth-child(5) {
+          grid-column: 1 / -1;
+        }
+        .cell {
+          padding: 12px 4px;
+        }
+        .cell .n {
+          font-size: 32px;
+        }
+        .cell .l {
+          font-size: 7px;
+        }
+
+        .section {
+          margin-top: 70px;
+        }
+        .section-head {
+          gap: 12px;
+          margin-bottom: 28px;
+        }
+        .section-num {
+          font-size: 9px;
+          padding: 6px 8px;
+        }
+        .section-hint {
+          font-size: 14px;
+          margin-top: -20px;
+          margin-bottom: 24px;
+        }
+
+        .us {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        .us-heart {
+          display: none;
+        }
+        .portrait img {
+          max-width: 200px;
+        }
+
+        .memories {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 14px;
+        }
+        .mem-front .mem-icon {
+          font-size: 32px;
+        }
+        .mem-front .mem-teaser {
+          font-size: 8px;
+        }
+        .mem-back h3 {
+          font-size: 18px;
+        }
+        .mem-back p {
+          font-size: 13px;
+        }
+        .mem-face {
+          padding: 16px 14px;
+        }
+
+        .envelope {
+          aspect-ratio: 1.6 / 1;
+        }
+        .env-stamp {
+          width: 42px;
+          height: 50px;
+          font-size: 18px;
+        }
+        .env-letter-preview {
+          font-size: 16px;
+        }
+        .env-front::after {
+          font-size: 7px;
+          bottom: 10px;
+          left: 14px;
+        }
+
+        .letter {
+          padding: 30px 22px 28px;
+          box-shadow: 6px 6px 0 var(--gold);
+        }
+        .letter::before {
+          font-size: 8px;
+          padding: 5px 10px;
+          left: 20px;
+        }
+        .letter::after {
+          width: 32px;
+          height: 32px;
+          font-size: 16px;
+          right: 20px;
+        }
+        .letter p:first-of-type::first-letter {
+          font-size: 46px;
+        }
+
+        .btn {
+          padding: 16px 24px;
+          box-shadow: 4px 4px 0 var(--ink);
+        }
+        .btn:active {
+          transform: translate(4px, 4px);
+          box-shadow: 0 0 0 var(--ink);
+        }
+
+        .surprise {
+          margin-top: 60px;
+        }
+        footer {
+          margin-top: 70px;
+        }
+
+        .achievement {
+          width: calc(100% - 30px);
+          padding: 14px 18px;
+        }
+        .achievement .ach-title {
+          font-size: 17px;
+        }
+        .achievement .ach-sub {
+          font-size: 13px;
+        }
+      }
+
+      @media (max-width: 380px) {
+        main {
+          padding: 24px 12px 50px;
+        }
+        h1 {
+          font-size: 38px;
+        }
+        .counter-grid {
+          gap: 6px;
+        }
+        .cell .n {
+          font-size: 28px;
+        }
+        .portrait {
+          padding: 16px;
+        }
+        .memories {
+          grid-template-columns: 1fr;
+        }
+        .letter {
+          padding: 26px 18px 24px;
+        }
+      }
+
+      @media (hover: none) {
+        .portrait:hover,
+        .portrait.her:hover,
+        .counter:hover,
+        .letter:hover {
+          transform: none;
+        }
+        .portrait:hover img {
+          transform: none;
+        }
+        .us:hover .us-heart {
+          transform: translate(-50%, -50%) scale(0);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hint" id="hint">
+      BU SAYFADA SÜRPRİZLER SAKLI. HEPSİNİ BULABİLECEK MİSİN?
+    </div>
+
+    <div class="hearts" id="hearts"></div>
+    <div class="confetti" id="confetti"></div>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow">İKİ YIL · TWO YEARS</div>
+        <h1>
+          <span class="word w1">Seninle</span>
+          <span class="word w2">&amp;</span>
+          <br />
+          <span class="word w3">hep</span>
+          <span class="word w4">seninle</span>
+        </h1>
+        <div class="sub">— bizim küçük pixel hikayemiz —</div>
+
+        <div class="couple-wrap" id="coupleWrap" title="bana tıkla :)">
+          <div class="bubble" id="coupleBubble">
+            seninle her şey daha güzel ♥
+          </div>
+          <span class="pulse"></span>
+          <span class="pulse p2"></span>
+          <span class="spark s1"></span>
+          <span class="spark s2"></span>
+          <span class="spark s3"></span>
+          <span class="spark s4"></span>
+          <img src="images/couple.png.png" alt="Pixel art - el ele" />
+        </div>
+
+        <div class="counter reveal">
+          <div class="counter-title">BIRLIKTE GEÇEN ZAMAN</div>
+          <div class="counter-grid">
+            <div class="cell">
+              <span class="n" id="d-days">0</span><span class="l">GÜN</span>
+            </div>
+            <div class="cell">
+              <span class="n" id="d-hours">0</span><span class="l">SAAT</span>
+            </div>
+            <div class="cell">
+              <span class="n" id="d-mins">0</span><span class="l">DAKIKA</span>
+            </div>
+            <div class="cell">
+              <span class="n" id="d-secs">0</span><span class="l">SANIYE</span>
+            </div>
+            <div class="cell heartbeat">
+              <span class="n" id="d-beats">0</span
+              ><span class="l">KALP ATIŞI</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head reveal">
+          <div class="section-num">01</div>
+          <div class="section-title">biz ikimiz</div>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="us">
+          <div class="us-heart"></div>
+          <div class="portrait reveal delay-1" data-shake>
+            <div class="tag">PLAYER 1</div>
+            <img src="images/boy.png.png" alt="Benim pixel art" />
+            <div class="name">Ben</div>
+            <div class="role">/ sana aşık /</div>
+          </div>
+          <div class="portrait her reveal delay-2" data-shake>
+            <div class="tag">PLAYER 2</div>
+            <img src="images/girl.png.png" alt="Onun pixel art" />
+            <div class="name">Sen</div>
+            <div class="role">/ hayatımın anlamı /</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head reveal">
+          <div class="section-num">02</div>
+          <div class="section-title">anı kartları</div>
+          <div class="section-line"></div>
+        </div>
+        <p class="section-hint reveal">▸ çevirmek için tıkla</p>
+
+        <div class="memories">
+          <div class="mem-card reveal">
+            <div class="mem-inner">
+              <div class="mem-face mem-front">
+                <div class="mem-num">#01</div>
+                <div class="mem-icon">👀</div>
+                <div class="mem-teaser">BAŞLANGIÇ</div>
+                <div class="mem-flip-hint">ÇEVİR</div>
+              </div>
+              <div class="mem-face mem-back">
+                <div class="mem-date">1. BÖLÜM</div>
+                <h3>Tanıştığımız gün</h3>
+                <p>
+                  O gün oraya çocuklara bir şeyler öğretmek için gitmiştim, ama
+                  hayat bana en büyük mucizemi o çatının altında verdi. O
+                  kalabalığın içinde gözlerinin içiyle güldüğün an, benim için
+                  her şeyin başladığı andı sevgilim.
+                </p>
+                <span class="mem-heart">♥</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mem-card reveal delay-1">
+            <div class="mem-inner">
+              <div class="mem-face mem-front">
+                <div class="mem-num">#02</div>
+                <div class="mem-icon">☕</div>
+                <div class="mem-teaser">İLK RANDEVU</div>
+                <div class="mem-flip-hint">ÇEVİR</div>
+              </div>
+              <div class="mem-face mem-back">
+                <div class="mem-date">2. BÖLÜM</div>
+                <h3>İlk randevumuz</h3>
+                <p>
+                  Senin sadece buluşma sandığın, benimse özenle planladığım o
+                  gün... Ayrık Otu'nda zaman durdu sanki. Saatler süren o
+                  doyumsuz sohbetimizde, ruhumun ait olduğu yeri bulduğunu
+                  anlamıştım güzelim.
+                </p>
+                <span class="mem-heart">♥</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mem-card reveal delay-2">
+            <div class="mem-inner">
+              <div class="mem-face mem-front">
+                <div class="mem-num">#03</div>
+                <div class="mem-icon">🌱</div>
+                <div class="mem-teaser">BÜYÜDÜK</div>
+                <div class="mem-flip-hint">ÇEVİR</div>
+              </div>
+              <div class="mem-face mem-back">
+                <div class="mem-date">3. BÖLÜM</div>
+                <h3>Birlikte büyüdük</h3>
+                <p>
+                  Sadece yan yana yürümek değildi bizimkisi; el ele verip hayata
+                  karşı bir olmak, beraber büyümekti. İyi günde birbirimizin
+                  neşesi, zor günde en güvenli sığınağı olduk. Seni çok
+                  seviyorum aşkım iyi ki varsın.
+                </p>
+                <span class="mem-heart">♥</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mem-card reveal delay-2">
+            <div class="mem-inner">
+              <div class="mem-face mem-front">
+                <div class="mem-num">#04</div>
+                <div class="mem-icon">✨</div>
+                <div class="mem-teaser">BUGÜN</div>
+                <div class="mem-flip-hint">ÇEVİR</div>
+              </div>
+              <div class="mem-face mem-back">
+                <div class="mem-date">BUGÜN · 2. YIL</div>
+                <h3>İki yıl ve fazlası</h3>
+                <p>
+                  Bugün tam iki yıl oldu sevgilim. Ama biliyorum ki bu, seninle
+                  geçireceğim bir ömrün sadece tatlı bir başlangıcı. Dünüm,
+                  bugünüm, en güzel yarınım... Hep seninle, hep el ele.
+                </p>
+                <span class="mem-heart">♥</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head reveal">
+          <div class="section-num">03</div>
+          <div class="section-title">sana bir mektup</div>
+          <div class="section-line"></div>
+        </div>
+        <p class="section-hint reveal">▸ zarfı açmak için tıkla</p>
+
+        <div class="envelope-scene reveal">
+          <div class="envelope" id="envelope">
+            <div class="env-back"></div>
+            <div class="env-letter">
+              <div class="env-letter-preview">seni çok<br />seviyorum ♥</div>
+            </div>
+            <div class="env-front"></div>
+            <div class="env-stamp">♥</div>
+            <div class="env-flap"></div>
+            <div class="env-tap">▸ TIKLA</div>
+          </div>
+        </div>
+
+        <div class="letter-full" id="letterFull">
+          <div class="letter">
+            <p>
+              Tam iki yıl önce bugün, hayatım daha önce hiç bilmediği o eşsiz,
+              sıcacık renklere seninle kavuştu sevgilim. O günden beri her gün
+              senin varlığına şükrederek, hayatımda olduğun için kendimi
+              dünyanın en şanslı insanı hissederek uyanıyorum. Benim en güzel
+              kahkaham, en büyük şansımsın güzelim. İyi ki varsın, iyi ki
+              benimsin.
+            </p>
+            <p>
+              Bu küçük pixel dünyasını sadece senin için oluşturdum balım çünkü
+              bizim hikayemiz tıpkı bu pikseller gibi; küçük anlardan, derin
+              mutluluklardan ve en çok da senin o aşık olduğum çocuksu, hayat
+              dolu hallerinden oluşuyor. O minik, sıradan gibi görünen anlar bir
+              araya geldiğinde, dünyanın en muazzam ve en sevgi dolu resmini
+              çiziyorlar.
+            </p>
+            <p>
+              Seni, o çocuk kalbinin her bir köşesiyle, her halinle çok
+              seviyorum. Dün, bugün, yarın ve tüm piksellerle... Bir ömür boyu
+              karıcığım. ♥
+            </p>
+            <div class="sign">Kalbim her zaman senin sevgilim</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="surprise reveal">
+        <button class="btn" id="openBtn">▸ SÜRPRİZİ AÇ</button>
+      </div>
+
+      <footer id="footer">2 Yılımız Kutlu Olsun ♥</footer>
+    </main>
+
+    <div class="modal" id="modal">
+      <div class="modal-card">
+        <div class="big-heart"></div>
+        <h2>Mutlu yıllar aşkım</h2>
+        <p>
+          Bu sayfa, sevginle güzelleştirdiğin her saniyemize küçük bir armağan.
+          Sadece bir sonraki iki yıla değil, seninle geçecek koca bir ömre...
+          Hep el ele, hep seninle aşkım. ♥
+        </p>
+        <button class="modal-close" id="closeBtn">KAPAT</button>
+      </div>
+    </div>
+
+    <div class="achievement" id="achievement">
+      <div class="ach-head">BAŞARIM AÇILDI</div>
+      <div class="ach-title">Sonuna kadar geldin 💗</div>
+      <div class="ach-sub">— tıpkı bizim gibi, hep birlikte</div>
+    </div>
+
+    <script>
+      /* ============= LIVE COUNTER =============
+     NOT: JS'de aylar 0'dan başlar (Ocak=0, Şubat=1, Nisan=3)
+     Kendi başlangıç tarih ve saatinle değiştir.
+  */
+      const START = new Date(2024, 3, 22, 20, 0, 0);
+
+      const d = (id) => document.getElementById(id);
+      const prev = { days: -1, hours: -1, mins: -1, secs: -1, beats: -1 };
+
+      function setCell(id, val) {
+        const el = d(id);
+        el.textContent = val.toLocaleString("tr-TR");
+        el.classList.remove("bump");
+        void el.offsetWidth;
+        el.classList.add("bump");
+      }
+
+      function tick() {
+        const now = new Date();
+        const diff = Math.max(0, now - START) / 1000;
+        const days = Math.floor(diff / 86400);
+        const hours = Math.floor(diff / 3600);
+        const mins = Math.floor(diff / 60);
+        const secs = Math.floor(diff);
+        const beats = Math.floor(diff * (72 / 60));
+
+        if (days !== prev.days) {
+          setCell("d-days", days);
+          prev.days = days;
+        }
+        if (hours !== prev.hours) {
+          setCell("d-hours", hours);
+          prev.hours = hours;
+        }
+        if (mins !== prev.mins) {
+          setCell("d-mins", mins);
+          prev.mins = mins;
+        }
+        if (secs !== prev.secs) {
+          setCell("d-secs", secs);
+          prev.secs = secs;
+        }
+        if (beats !== prev.beats) {
+          setCell("d-beats", beats);
+          prev.beats = beats;
+        }
+      }
+      tick();
+      setInterval(tick, 1000);
+
+      /* ============= HEARTS ============= */
+      const hearts = document.getElementById("hearts");
+      const isMobile = window.matchMedia("(max-width: 640px)").matches;
+
+      function spawnHeart() {
+        const h = document.createElement("span");
+        h.style.left = Math.random() * 100 + "vw";
+        const size = 10 + Math.random() * 14;
+        h.style.transform = `scale(${size / 18})`;
+        h.style.animationDuration = 8 + Math.random() * 8 + "s";
+        h.style.opacity = 0.3 + Math.random() * 0.5;
+        hearts.appendChild(h);
+        setTimeout(() => h.remove(), 16000);
+      }
+      setInterval(spawnHeart, isMobile ? 900 : 600);
+      for (let i = 0; i < 6; i++) setTimeout(spawnHeart, i * 500);
+
+      /* ============= SCROLL REVEAL ============= */
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("in");
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.15, rootMargin: "0px 0px -60px 0px" },
+      );
+      document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+      /* ============= PORTRAIT TAP SHAKE ============= */
+      document.querySelectorAll("[data-shake]").forEach((el) => {
+        el.addEventListener("click", () => {
+          el.classList.remove("shake");
+          void el.offsetWidth;
+          el.classList.add("shake");
+          for (let i = 0; i < 6; i++) setTimeout(spawnHeart, i * 80);
+        });
+      });
+
+      /* ============= EASTER EGG 1: Couple speech bubble ============= */
+      const coupleBubble = document.getElementById("coupleBubble");
+      const bubbleMessages = [
+        "seninle her şey daha güzel ♥",
+        "2 yıl oldu, sanki 2 gün ✨",
+        "seni çok seviyorum 🥺",
+        "bir daha tıkla bakalım 👀",
+        "gel sarılalım 🤗",
+        "sen benim en güzel anımsın",
+        "kalbimde sen varsın ♥",
+        "yine mi sen? iyi ki 💗",
+      ];
+      let bubbleIndex = 0;
+      let bubbleTimer;
+
+      document.getElementById("coupleWrap").addEventListener("click", () => {
+        coupleBubble.textContent =
+          bubbleMessages[bubbleIndex % bubbleMessages.length];
+        bubbleIndex++;
+        coupleBubble.classList.add("show");
+        for (let i = 0; i < 4; i++) setTimeout(spawnHeart, i * 100);
+
+        clearTimeout(bubbleTimer);
+        bubbleTimer = setTimeout(() => {
+          coupleBubble.classList.remove("show");
+        }, 2800);
+      });
+
+      /* ============= MEMORY CARD FLIP ============= */
+      document.querySelectorAll(".mem-card").forEach((card) => {
+        card.addEventListener("click", () => {
+          card.classList.toggle("flipped");
+          if (card.classList.contains("flipped")) {
+            for (let i = 0; i < 3; i++) setTimeout(spawnHeart, i * 120);
+          }
+        });
+      });
+
+      /* ============= ENVELOPE OPEN & CLOSE ============= */
+      const envelope = document.getElementById("envelope");
+      const letterFull = document.getElementById("letterFull");
+
+      envelope.addEventListener("click", () => {
+        const isOpened = envelope.classList.contains("opened");
+
+        if (isOpened) {
+          // Mektubu Kapat
+          letterFull.classList.remove("show");
+          setTimeout(() => {
+            envelope.classList.remove("opened");
+          }, 1200);
+        } else {
+          // Mektubu Aç
+          envelope.classList.add("opened");
+          setTimeout(() => {
+            letterFull.classList.add("show");
+          }, 1000);
+
+          for (let i = 0; i < 10; i++) setTimeout(spawnHeart, i * 120);
+        }
+      });
+
+      /* ============= EASTER EGG 2: Type "LOVE" ============= */
+      let typedBuffer = "";
+      const loveTrigger = "love";
+      window.addEventListener("keydown", (e) => {
+        if (e.key.length === 1) {
+          typedBuffer = (typedBuffer + e.key.toLowerCase()).slice(-10);
+          if (typedBuffer.endsWith(loveTrigger)) {
+            triggerLove();
+            typedBuffer = "";
+          }
+        }
+      });
+
+      function triggerLove() {
+        burstConfetti(120);
+        for (let i = 0; i < 30; i++) setTimeout(spawnHeart, i * 50);
+        showAchievement("Gizli kod: LOVE", "— sen tam bir dedektifsin 🔍");
+      }
+
+      /* ============= EASTER EGG 3: Scroll to bottom achievement ============= */
+      let achievementShown = false;
+      const footer = document.getElementById("footer");
+      const achievementIO = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting && !achievementShown) {
+              achievementShown = true;
+              setTimeout(() => {
+                showAchievement(
+                  "Sonuna kadar geldin 💗",
+                  "— tıpkı bizim gibi, hep birlikte",
+                );
+              }, 400);
+            }
+          });
+        },
+        { threshold: 0.6 },
+      );
+      achievementIO.observe(footer);
+
+      function showAchievement(title, sub) {
+        const ach = document.getElementById("achievement");
+        ach.querySelector(".ach-title").textContent = title;
+        ach.querySelector(".ach-sub").textContent = sub;
+        ach.classList.add("show");
+        setTimeout(() => ach.classList.remove("show"), 4500);
+      }
+
+      /* ============= CONFETTI ============= */
+      const confettiLayer = document.getElementById("confetti");
+      const COLORS = [
+        "#e86a6a",
+        "#c94848",
+        "#e2a84b",
+        "#a7c7e7",
+        "#b7d8b0",
+        "#ffd4c7",
+      ];
+
+      function burstConfetti(count = 60) {
+        const n = isMobile ? Math.floor(count * 0.6) : count;
+        for (let i = 0; i < n; i++) {
+          const p = document.createElement("span");
+          const size = 6 + Math.random() * 10;
+          p.style.width = size + "px";
+          p.style.height = size + "px";
+          p.style.background =
+            COLORS[Math.floor(Math.random() * COLORS.length)];
+          p.style.borderRadius = Math.random() < 0.4 ? "2px" : "50%";
+          const angle = Math.random() * Math.PI * 2;
+          const velocity = 200 + Math.random() * 400;
+          const dx = Math.cos(angle) * velocity;
+          const dy = Math.sin(angle) * velocity - 200;
+          const rot = (Math.random() - 0.5) * 720;
+          const dur = 1200 + Math.random() * 1400;
+
+          confettiLayer.appendChild(p);
+
+          p.animate(
+            [
+              { transform: "translate(-50%, -50%) rotate(0)", opacity: 1 },
+              {
+                transform: `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) rotate(${rot}deg)`,
+                opacity: 0,
+              },
+            ],
+            {
+              duration: dur,
+              easing: "cubic-bezier(.2,.7,.2,1)",
+              fill: "forwards",
+            },
+          );
+          setTimeout(() => p.remove(), dur);
+        }
+      }
+
+      /* ============= MODAL ============= */
+      const modal = document.getElementById("modal");
+      document.getElementById("openBtn").addEventListener("click", () => {
+        modal.classList.add("open");
+        burstConfetti(80);
+        for (let i = 0; i < 20; i++) setTimeout(spawnHeart, i * 60);
+      });
+      document.getElementById("closeBtn").addEventListener("click", () => {
+        modal.classList.remove("open");
+      });
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) modal.classList.remove("open");
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") modal.classList.remove("open");
+      });
+    </script>
+  </body>
+</html>
