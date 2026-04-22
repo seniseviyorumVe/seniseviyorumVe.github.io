@@ -143,7 +143,7 @@
         padding: 60px 28px 120px;
       }
 
-      /* ---------- Hint banner (easter egg ipucu) ---------- */
+      /* ---------- Hint banner ---------- */
       .hint {
         position: fixed;
         top: 20px;
@@ -328,7 +328,7 @@
         }
       }
 
-      /* Speech bubble (easter egg on couple click) */
+      /* Speech bubble */
       .bubble {
         position: absolute;
         top: 2%;
@@ -617,7 +617,7 @@
         font-style: italic;
       }
 
-      /* ---------- Us card (two portraits) ---------- */
+      /* ---------- Us card ---------- */
       .us {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -726,8 +726,8 @@
       }
 
       /* ================================================
-     MEMORY CARDS (flip cards - replaces timeline)
-  ================================================ */
+       MEMORY CARDS
+      ================================================ */
       .memories {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -759,6 +759,7 @@
         display: flex;
         flex-direction: column;
         box-shadow: var(--shadow-sm);
+        background: var(--bg-2); /* Arka plan fallback */
       }
       /* FRONT */
       .mem-front {
@@ -847,13 +848,12 @@
       }
 
       /* ================================================
-     ENVELOPE LETTER — temiz 3D açılış (GÜNCELLENDİ)
-     Katmanlama (z-index) ve Hizalama Düzeltmeleri
-  ================================================ */
+       ENVELOPE LETTER
+      ================================================ */
       .envelope-scene {
         max-width: 560px;
         margin: 0 auto;
-        padding-bottom: 80px; /* Alttaki "TIKLA" ve pul için yer açtık */
+        padding-bottom: 80px;
         perspective: 1600px;
       }
 
@@ -862,20 +862,18 @@
         width: 100%;
         aspect-ratio: 1.7 / 1;
         cursor: pointer;
-        transition: transform 1s ease; /* Daha yavaş, yumuşak açılış */
-        transform-style: preserve-3d; /* 3D geçişler için */
+        transition: transform 1s ease;
+        transform-style: preserve-3d;
       }
 
       .envelope:not(.opened):hover {
-        transform: translateY(-8px); /* Daha fark edilir bir hover efekti */
+        transform: translateY(-8px);
       }
 
-      /* Zarf açıldığında tüm zarfın aşağı kaymasını sağladık */
       .envelope.opened {
         transform: translateY(120px) !important;
       }
 
-      /* En arkadaki zarf tabanı */
       .env-back {
         position: absolute;
         inset: 0;
@@ -887,29 +885,26 @@
         overflow: hidden;
       }
 
-      /* Zarfın ÖN yüzü — alt gövde, üst kenarı clip-path ile V formu */
       .env-front {
         position: absolute;
         left: 0;
         right: 0;
         bottom: 0;
-        height: 60%; /* Yüksekliği biraz artırdık */
+        height: 60%;
         background: var(--bg-2);
         border: 3px solid var(--ink);
         border-top: none;
         border-radius: 0 0 4px 4px;
         z-index: 3;
-        /* clip-path'i daha düzgün hale getirdik */
         clip-path: polygon(0 0, 50% 40%, 100% 0, 100% 100%, 0 100%);
       }
 
-      /* Üçgen kapak — üstte duran, tıklayınca arkaya yatan */
       .env-flap {
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
-        height: 60%; /* Yüksekliği gövdeyle uyumlu yaptık */
+        height: 60%;
         background: var(--blush);
         border: 3px solid var(--ink);
         clip-path: polygon(0 0, 100% 0, 50% 100%);
@@ -919,13 +914,11 @@
         z-index: 5;
       }
 
-      /* Zarf açıldığında kapak arkaya yatar (Z-index değişimi) */
       .envelope.opened .env-flap {
         transform: rotateX(-180deg);
-        z-index: 0; /* Mektubun arkasına gitmesi için */
+        z-index: 0;
       }
 
-      /* Mektup kağıdı — zarfın içinde gizli, açılınca yukarı çıkar */
       .env-letter {
         position: absolute;
         left: 8%;
@@ -942,10 +935,9 @@
         transition:
           transform 1s 0.2s cubic-bezier(0.2, 0.8, 0.3, 1),
           opacity 0.5s 0.2s;
-        opacity: 0; /* Kapalıyken gizli */
+        opacity: 0;
       }
 
-      /* Zarf açıldığında mektup yukarı çıkar ve görünür olur */
       .envelope.opened .env-letter {
         transform: translateY(-70%);
         opacity: 1;
@@ -958,16 +950,14 @@
         text-align: center;
         color: var(--rose-deep);
         line-height: 1.4;
-        opacity: 0; /* Kapalıyken gizli */
+        opacity: 0;
       }
 
-      /* Zarf açıldığında mektup önizleme metni görünür olur */
       .envelope.opened .env-letter .env-letter-preview {
         opacity: 1;
-        transition: opacity 0.5s 1.2s; /* Tam açıldıktan sonra görünmesi için gecikme */
+        transition: opacity 0.5s 1.2s;
       }
 
-      /* Pul — küçültülüp yerleştirildi */
       .env-stamp {
         position: absolute;
         top: 10px;
@@ -988,13 +978,11 @@
         animation: beat 1.6s ease infinite;
       }
 
-      /* Zarf açıldığında pul gizlenir */
       .envelope.opened .env-stamp {
         opacity: 0;
         transform: scale(0.6);
       }
 
-      /* gönderen adresi süsü (TO: ASKIMA) */
       .env-front::after {
         content: "TO: ASKIMA";
         position: absolute;
@@ -1006,7 +994,6 @@
         color: var(--ink-soft);
       }
 
-      /* "TIKLA" ipucu — Pulun altına yerleştirildi */
       .env-tap {
         position: absolute;
         top: 75px;
@@ -1021,7 +1008,6 @@
         transition: opacity 0.3s;
       }
 
-      /* Zarf açıldığında "TIKLA" gizlenir */
       .envelope.opened .env-tap {
         opacity: 0;
       }
@@ -1038,19 +1024,17 @@
         }
       }
 
-      /* Full letter (appears after envelope opens) */
       .letter-full {
         max-height: 0;
         overflow: hidden;
         opacity: 0;
-        /* transition'a padding'i de ekledik ki açılırken yumuşak olsun */
         transition:
           max-height 1.5s ease,
           opacity 1s ease,
           margin 1.5s ease,
           padding 1.5s ease;
         margin-top: 0;
-        padding: 0; /* Kapalıyken sıfır */
+        padding: 0;
       }
 
       .letter-full.show {
@@ -1069,8 +1053,8 @@
         transition:
           transform 0.4s,
           box-shadow 0.4s;
-        overflow-y: auto;
         margin: 30px 15px 20px 15px;
+        word-wrap: break-word;
       }
       .letter:hover {
         transform: translate(-2px, -2px) rotate(-0.3deg);
@@ -1131,8 +1115,8 @@
       }
 
       /* ================================================
-     ACHIEVEMENT TOAST (easter egg: scroll to bottom)
-  ================================================ */
+       ACHIEVEMENT TOAST
+      ================================================ */
       .achievement {
         position: fixed;
         bottom: 30px;
@@ -1462,28 +1446,36 @@
           max-width: 200px;
         }
 
+        /* --- BURASI DÜZELTİLDİ: Kartlar tek sütun ve daha esnek oldu --- */
         .memories {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 14px;
+          grid-template-columns: 1fr;
+          gap: 24px;
+          max-width: 360px;
+          margin: 0 auto;
+        }
+        .mem-card {
+          aspect-ratio: auto;
+          min-height: 320px; /* 3D transform için fixed bir yükseklik verildi */
         }
         .mem-front .mem-icon {
           font-size: 32px;
         }
         .mem-front .mem-teaser {
-          font-size: 8px;
+          font-size: 9px;
         }
         .mem-back h3 {
-          font-size: 18px;
+          font-size: 20px;
         }
         .mem-back p {
-          font-size: 13px;
+          font-size: 15px; /* Yazı boyutu okunabilirlik için artırıldı */
         }
         .mem-face {
-          padding: 16px 14px;
+          padding: 24px 20px;
         }
 
+        /* --- BURASI DÜZELTİLDİ: Mektup mobilde taşmasın diye ayarlandı --- */
         .envelope {
-          aspect-ratio: 1.6 / 1;
+          aspect-ratio: 1.4 / 1;
         }
         .env-stamp {
           width: 42px;
@@ -1500,8 +1492,12 @@
         }
 
         .letter {
-          padding: 30px 22px 28px;
+          padding: 30px 20px 24px; /* Mobilde daraldığı için kenar boşlukları azaltıldı */
           box-shadow: 6px 6px 0 var(--gold);
+        }
+        .letter p {
+          font-size: 15px; /* Yazı boyutu esnetildi */
+          line-height: 1.6;
         }
         .letter::before {
           font-size: 8px;
@@ -1515,7 +1511,7 @@
           right: 20px;
         }
         .letter p:first-of-type::first-letter {
-          font-size: 46px;
+          font-size: 40px;
         }
 
         .btn {
@@ -1563,10 +1559,10 @@
           padding: 16px;
         }
         .memories {
-          grid-template-columns: 1fr;
+          max-width: 100%;
         }
         .letter {
-          padding: 26px 18px 24px;
+          padding: 24px 14px 20px;
         }
       }
 
@@ -1850,10 +1846,7 @@
     </div>
 
     <script>
-      /* ============= LIVE COUNTER =============
-     NOT: JS'de aylar 0'dan başlar (Ocak=0, Şubat=1, Nisan=3)
-     Kendi başlangıç tarih ve saatinle değiştir.
-  */
+      /* ============= LIVE COUNTER ============= */
       const START = new Date(2024, 3, 22, 20, 0, 0);
 
       const d = (id) => document.getElementById(id);
@@ -1941,7 +1934,7 @@
         });
       });
 
-      /* ============= EASTER EGG 1: Couple speech bubble ============= */
+      /* ============= EASTER EGG 1 ============= */
       const coupleBubble = document.getElementById("coupleBubble");
       const bubbleMessages = [
         "seninle her şey daha güzel ♥",
@@ -1979,7 +1972,7 @@
         });
       });
 
-      /* ============= ENVELOPE OPEN & CLOSE ============= */
+      /* ============= ENVELOPE ============= */
       const envelope = document.getElementById("envelope");
       const letterFull = document.getElementById("letterFull");
 
@@ -1987,23 +1980,20 @@
         const isOpened = envelope.classList.contains("opened");
 
         if (isOpened) {
-          // Mektubu Kapat
           letterFull.classList.remove("show");
           setTimeout(() => {
             envelope.classList.remove("opened");
           }, 1200);
         } else {
-          // Mektubu Aç
           envelope.classList.add("opened");
           setTimeout(() => {
             letterFull.classList.add("show");
           }, 1000);
-
           for (let i = 0; i < 10; i++) setTimeout(spawnHeart, i * 120);
         }
       });
 
-      /* ============= EASTER EGG 2: Type "LOVE" ============= */
+      /* ============= EASTER EGG 2 ============= */
       let typedBuffer = "";
       const loveTrigger = "love";
       window.addEventListener("keydown", (e) => {
@@ -2022,7 +2012,7 @@
         showAchievement("Gizli kod: LOVE", "— sen tam bir dedektifsin 🔍");
       }
 
-      /* ============= EASTER EGG 3: Scroll to bottom achievement ============= */
+      /* ============= EASTER EGG 3 ============= */
       let achievementShown = false;
       const footer = document.getElementById("footer");
       const achievementIO = new IntersectionObserver(
